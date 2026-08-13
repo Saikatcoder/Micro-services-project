@@ -1,0 +1,32 @@
+import dotenv from "dotenv"
+dotenv.config()
+
+import express, { Request, Response } from "express"
+import morgan from "morgan"
+import cors from "cors"
+import { createProxyMiddleware } from "http-proxy-middleware"
+const app = express()
+app.listen(process.env.PORT, ()=>console.log("gateway service is running on - http://localhost:8080"))
+
+
+app.use(cors({
+	origin: process.env.CLIENT,
+	credentials: true
+}))
+app.use(morgan('dev'))
+
+app.use("/auth", createProxyMiddleware({
+	target: 'http://localhost:4001/auth',
+	changeOrigin: true
+}))
+
+app.use("/bucket", createProxyMiddleware({
+	target: 'http://localhost:4002/bucket',
+	changeOrigin: true
+}))
+
+app.use("/video", createProxyMiddleware({
+	target: 'http://localhost:4003/video',
+	changeOrigin: true
+}))
+

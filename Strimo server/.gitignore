@@ -1,0 +1,45 @@
+# Node modules (all services)
+**/node_modules/
+
+# Build output (e.g. TypeScript)
+**/dist/
+**/build/
+**/*.tsbuildinfo
+
+# Logs
+**/*.log
+**/logs/
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+
+# Docker overrides or local-specific config
+docker-compose.override.yml
+*.local
+
+# Coverage reports
+**/coverage/
+
+# Optional - Prisma or SQLite local DBs
+**/*.sqlite
+**/*.db
+**/*.db-journal
+
+# PM2
+**/.pids
+
+# Swagger
+**/swagger.json
+**/swagger-output.json
+
+# Swap files
+*.swp
+*.swo
